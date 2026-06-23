@@ -1,0 +1,23 @@
+{
+  "name": "prem-socket-test-bot",
+  "version": "1.0.0",
+  "description": "Minimal Teams bot socket-mode test client for local APX (Azure SignalR serverless). Connects, receives activity/invoke envelopes, and replies over the socket. Directive-driven so one bot drives every socket-mode scenario.",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "node -r dotenv/config ./lib/index.js",
+    "dev": "nodemon --watch src --ext ts --exec \"node -r dotenv/config -r ts-node/register ./src/index.ts\""
+  },
+  "dependencies": {
+    "@microsoft/signalr": "^8.0.7",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
