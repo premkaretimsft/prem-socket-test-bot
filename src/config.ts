@@ -10,10 +10,11 @@ export const config = {
   // is your local APX; the WSS URL itself is returned by negotiate (Azure SignalR).
   apxBaseUrl: process.env.APX_BASE_URL || "https://localhost:444",
 
-  // The bot's MSA AppId. APX uses this as the socket "botKey" (group bot_{botKey})
-  // and the bot echoes it back on replies. In a DEBUG local APX build the
-  // negotiate endpoint accepts ?botKey=<this> without auth.
-  botKey: process.env.BOT_KEY || "",
+  // The bot's MSA AppId = the socket "botKey" (group bot_{botKey}); echoed back on
+  // replies. Populated by Teams Toolkit provision as BOT_ID (the created Entra app's
+  // client id); falls back to BOT_KEY for a manual .env run. In a DEBUG local APX
+  // build the negotiate endpoint accepts ?botKey=<this> without auth.
+  botKey: process.env.BOT_ID || process.env.BOT_KEY || "",
 
   // Re-negotiate at this fraction of the token lifetime (make-before-break-lite).
   renegotiateFraction: Number(process.env.RENEGOTIATE_FRACTION || 0.8),
